@@ -984,6 +984,10 @@ const C=(()=>{
 })();
 
 /* ---------- SONG REQUEST QUIZ FUNNEL ---------- */
+// Requests are delivered by FormSubmit (formsubmit.co) to this inbox.
+// After the first request, FormSubmit emails this address a one-time activation link.
+// Once activated, you can swap the address below for the private alias FormSubmit sends.
+const REQUEST_TO='thatchristmaschannel@live365.com';
 (function(){
   const VIBES={
     crooner:{e:'🎩',l:'Classic Crooner',d:'Bing, Nat & the golden age',title:'The Classic Crooner',blurb:'Velvet vocals, a crackling fire and a cup of cocoa. You keep Christmas timeless.',songs:[["White Christmas","Bing Crosby"],["The Christmas Song","Nat King Cole"],["Have Yourself a Merry Little Christmas","Judy Garland"],["It's Beginning to Look a Lot Like Christmas","Perry Como"]]},
@@ -1018,7 +1022,7 @@ const C=(()=>{
       <div class="f-err" id="fErr"></div><div class="f-next"><button class="btn btn-gold" data-next>Almost there ⭐</button></div>`;
     if(i===5)return `<div class="f-q">Who's the request from?</div><div class="f-sub">So the hosts can give you a shout-out.</div>
       <div class="f-fields"><div class="f-two"><div><label for="qFirst">First name</label><input id="qFirst" autocomplete="given-name" value="${esc(st.first)}"></div><div><label for="qLast">Last name</label><input id="qLast" autocomplete="family-name" value="${esc(st.last)}"></div></div>
-      <div><label for="qEmail">Email</label><input id="qEmail" type="email" autocomplete="email" value="${esc(st.email)}"></div>
+      <div><label for="qEmail">Email</label><input id="qEmail" type="email" autocomplete="email" value="${esc(st.email)}"></div><input id="fHoney" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">
       <div><label>Join our mailing list?</label><div class="f-toggle"><button data-list="Yes" class="${st.list==='Yes'?'sel':''}">🎄 Yes please</button><button data-list="No" class="${st.list==='No'?'sel':''}">No thanks</button></div></div></div>
       <div class="f-err" id="fErr"></div><div class="f-next"><button class="btn btn-red" data-next>🎅 Reveal My Christmas Vibe</button></div>`;
     const V=VIBES[st.vibe];
@@ -1059,11 +1063,25 @@ const C=(()=>{
       if(cur===5){st.first=val('qFirst');st.last=val('qLast');st.email=val('qEmail');const bad=['qFirst','qLast'].filter(i=>!val(i));if(!/^\S+@\S+\.\S+$/.test(st.email))bad.push('qEmail');
         if(bad.length)return err('Please add your name and a valid email.',bad)}
       chime(988,.25);go(cur+1)};
-    const send=el.querySelector('#fSend');if(send)send.onclick=()=>{
-      const V=VIBES[st.vibe];
-      const body=`Song: ${st.song}\nArtist: ${st.artist}\n${st.ded?'Dedicated to: '+st.ded+'\n':''}Name: ${st.first} ${st.last}\nEmail: ${st.email}\nListening from: ${st.where}\nMailing list: ${st.list}\n\nChristmas vibe: ${V.title} (${st.who}, ${st.scene})`;
-      const a=document.createElement('a');a.href='mailto:thatchristmaschannel@live365.com?subject='+encodeURIComponent('Song Request: '+st.song)+'&body='+encodeURIComponent(body);a.click();
-      const s=$('#sentMsg');s.style.display='block';s.innerHTML='🎄 Your email app should open with your request filled in. Just hit send! If nothing opened, email it to <b>thatchristmaschannel@live365.com</b>.';confetti();chime(1319,.5)};
+    const send=el.querySelector('#fSend');if(send)send.onclick=async()=>{
+      if(send.disabled)return;const V=VIBES[st.vibe],msg=$('#sentMsg');
+      if($('#fHoney')&&$('#fHoney').value)return; // bot trap
+      send.disabled=true;send.innerHTML='🛷 Sending…';
+      const payload={_subject:'🎄 New Song Request: '+st.song+' – '+st.artist,_template:'table',_captcha:'false',_replyto:st.email,
+        'Song':st.song,'Artist':st.artist,'Dedicated to':st.ded||'—','Name':st.first+' '+st.last,'Email':st.email,'Listening from':st.where,'Mailing list':st.list,
+        'Christmas vibe':V.title+' ('+st.who+', '+st.scene+')','Sent from':location.href};
+      try{
+        const r=await fetch('https://formsubmit.co/ajax/'+REQUEST_TO,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)});
+        const j=await r.json().catch(()=>({}));
+        if(!r.ok||String(j.success)==='false'&&!/activat/i.test(j.message||''))throw new Error(j.message||r.status);
+        msg.style.display='block';msg.style.background='#e7f8ef';msg.style.color='#0f5a3a';
+        msg.innerHTML='🎉 Request sent to the North Pole studio! Keep listening, your song could be next.';
+        send.innerHTML='✅ Request Sent';confetti();chime(1319,.5);
+      }catch(err){
+        send.disabled=false;send.innerHTML='⭐ Try Again';
+        msg.style.display='block';msg.style.background='#fde8eb';msg.style.color='#8f1022';
+        msg.innerHTML='Hmm, the sleigh hit some turbulence and your request didn\'t go through. Tap <b>Try Again</b>, or email it to <b>'+REQUEST_TO+'</b>.';
+      }};
     const again=el.querySelector('#fAgain');if(again)again.onclick=()=>{Object.assign(st,{vibe:null,who:null,scene:null,song:'',artist:'',ded:''});go(0,-1)};
   }
   $('#fBack').onclick=()=>{if(cur>0){chime(523,.2);go(cur-1,-1)}};
