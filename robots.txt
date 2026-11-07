@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://jamesonflex.github.io/that-christmas-channel/sitemap.xml
