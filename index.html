@@ -51,10 +51,11 @@ a{color:inherit}
 main,header,footer{position:relative;z-index:2}
 h1,h2,h3{font-family:'Alfa Slab One',serif;font-weight:400;letter-spacing:.5px;line-height:1.1}
 .script{font-family:Lobster,cursive;font-weight:400}
-.wrap{width:min(1150px,92vw);margin:0 auto}
+.wrap{width:min(1340px,95vw);margin:0 auto}
+@media (max-width:760px){.wrap{width:94vw}}
 
 /* NAV */
-.nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;gap:14px;padding:10px 4vw;background:linear-gradient(180deg,rgba(7,13,38,.92),rgba(7,13,38,.55));backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(247,201,72,.18)}
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;gap:14px;padding:10px 2.5vw;background:linear-gradient(180deg,rgba(7,13,38,.92),rgba(7,13,38,.55));backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(247,201,72,.18)}
 .nav .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
 .nav .brand img{width:46px;height:46px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 2px var(--gold),0 0 18px rgba(247,201,72,.5)}
 .nav .brand span{font-family:'Alfa Slab One';font-size:15px;line-height:1.05;color:var(--snow)}
@@ -81,7 +82,7 @@ h1,h2,h3{font-family:'Alfa Slab One',serif;font-weight:400;letter-spacing:.5px;l
 }
 
 /* HERO */
-.hero{min-height:100svh;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:30px;padding:100px 4vw 120px;width:min(1250px,100%);margin:0 auto}
+.hero{min-height:100svh;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:30px;padding:96px 2.5vw 120px;width:min(1440px,100%);margin:0 auto}
 .globe-stage{perspective:1100px;display:flex;justify-content:center}
 .globe{position:relative;width:min(560px,86vw);aspect-ratio:1;transform-style:preserve-3d;transition:transform .25s ease-out;cursor:grab;touch-action:none;filter:drop-shadow(0 30px 60px rgba(0,0,0,.6)) drop-shadow(0 0 50px rgba(120,170,255,.25))}
 .globe:active{cursor:grabbing}
@@ -91,8 +92,9 @@ h1,h2,h3{font-family:'Alfa Slab One',serif;font-weight:400;letter-spacing:.5px;l
 .globe .shine{position:absolute;left:14%;top:4%;width:28%;height:20%;border-radius:50%;background:radial-gradient(closest-side,rgba(255,255,255,.35),transparent);transform:rotate(-30deg) translateZ(40px);pointer-events:none;mix-blend-mode:screen}
 .shake-hint{position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);font-size:13px;font-weight:600;color:var(--gold2);background:rgba(7,13,38,.75);padding:6px 14px;border-radius:99px;white-space:nowrap;border:1px solid rgba(247,201,72,.35)}
 .hero-copy .eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:99px;background:rgba(200,16,46,.22);border:1px solid rgba(227,38,63,.6);font-weight:800;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:#ffd6dc}
-.hero-copy h1{font-size:clamp(46px,7vw,92px);margin:18px 0 6px;color:#fff;text-shadow:0 4px 0 var(--red),0 8px 30px rgba(0,0,0,.6)}
-.hero-copy h1 .script{display:block;color:var(--gold);font-size:1.05em;text-shadow:0 3px 0 #8a5a00,0 8px 30px rgba(0,0,0,.6);margin-top:4px}
+.hero-copy h1{font-size:72px;white-space:nowrap;margin:18px 0 6px;color:#fff;text-shadow:0 4px 0 var(--red),0 8px 30px rgba(0,0,0,.6)}
+.hero-copy h1 .script{color:var(--gold);font-size:1.08em;text-shadow:0 3px 0 #8a5a00,0 8px 30px rgba(0,0,0,.6)}
+.hero-copy{min-width:0}
 .hero-copy p.lead{font-size:clamp(18px,2vw,22px);color:#dbe5ff;max-width:520px;margin:14px 0 26px}
 .cta-row{display:flex;flex-wrap:wrap;gap:12px}
 .onair{margin-top:28px;display:flex;align-items:center;gap:14px;padding:14px 18px;border-radius:18px;background:rgba(7,13,38,.7);border:1px solid rgba(255,255,255,.14);max-width:460px}
@@ -104,6 +106,58 @@ h1,h2,h3{font-family:'Alfa Slab One',serif;font-weight:400;letter-spacing:.5px;l
 .eq i:nth-child(2){animation-delay:.2s}.eq i:nth-child(3){animation-delay:.4s}.eq i:nth-child(4){animation-delay:.1s}
 @keyframes eq{0%,100%{height:5px}50%{height:22px}}
 @media (max-width:900px){.hero{grid-template-columns:1fr;text-align:center;padding-top:90px}.hero-copy{order:2}.hero-copy p.lead,.onair{margin-left:auto;margin-right:auto}.cta-row{justify-content:center}}
+
+
+/* SANTA TRACKER */
+.tracker{display:grid;grid-template-columns:1.25fr .75fr;gap:22px;align-items:stretch}
+.globe3d{position:relative;border-radius:28px;overflow:hidden;min-height:440px;background:radial-gradient(circle at 50% 45%,#16307f 0%,#0a1438 55%,#050a22 100%);border:1px solid rgba(255,255,255,.18);box-shadow:0 25px 60px rgba(0,0,0,.45)}
+#trackCanvas{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:grab;touch-action:pan-y}
+.globe3d .gtag{position:absolute;left:14px;top:14px;background:rgba(7,13,38,.8);border:1px solid rgba(247,201,72,.4);color:var(--gold2);font-weight:800;font-size:12px;letter-spacing:1px;padding:6px 10px;border-radius:8px}
+.tpanel{display:flex;flex-direction:column;gap:12px}
+.tstat{padding:16px 18px;border-radius:18px;background:rgba(7,13,38,.72);border:1px solid rgba(255,255,255,.16)}
+.tstat small{display:block;color:#b8c6f0;font-weight:600;font-size:12px;letter-spacing:1.5px;text-transform:uppercase}
+.tstat strong{display:block;font-size:22px;margin-top:2px;color:#fff}
+.tstat strong.gold{color:var(--gold)}
+.tbar{height:10px;border-radius:99px;background:rgba(255,255,255,.14);overflow:hidden;margin-top:10px}
+.tbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--red2))}
+.tnote{font-size:13px;color:#c8d3f5}
+.tnote a{color:var(--gold2);font-weight:700}
+@media (max-width:900px){.tracker{grid-template-columns:1fr}.globe3d{min-height:360px}}
+
+/* POP-UP LIVE PLAYER (ghosted glass window) */
+.pl-back{position:fixed;inset:0;z-index:90;background:rgba(4,8,32,.45);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);opacity:0;pointer-events:none;transition:opacity .3s}
+.pl-back.on{opacity:1;pointer-events:auto}
+.player-win{position:fixed;z-index:95;left:50%;top:50%;width:min(560px,94vw);transform:translate(-50%,-46%) scale(.94);opacity:0;pointer-events:none;transition:all .35s cubic-bezier(.2,.8,.2,1);
+  border-radius:28px;padding:14px;background:linear-gradient(160deg,rgba(255,255,255,.22),rgba(255,255,255,.07));backdrop-filter:blur(18px) saturate(1.3);-webkit-backdrop-filter:blur(18px) saturate(1.3);
+  border:1px solid rgba(255,255,255,.35);box-shadow:0 30px 80px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.4)}
+.player-win.on{opacity:1;pointer-events:auto;transform:translate(-50%,-50%) scale(1)}
+.player-win .lights{position:absolute;left:18px;right:18px;top:-10px;height:22px;display:flex;justify-content:space-between;pointer-events:none}
+.player-win .lights i{width:11px;height:16px;border-radius:50% 50% 45% 45%;animation:twinkle 1.4s infinite alternate}
+.player-win .lights i:nth-child(4n+1){background:#ff3355;box-shadow:0 0 12px #ff3355}
+.player-win .lights i:nth-child(4n+2){background:#f7c948;box-shadow:0 0 12px #f7c948;animation-delay:.3s}
+.player-win .lights i:nth-child(4n+3){background:#36d27a;box-shadow:0 0 12px #36d27a;animation-delay:.6s}
+.player-win .lights i:nth-child(4n){background:#5aa9ff;box-shadow:0 0 12px #5aa9ff;animation-delay:.9s}
+@keyframes twinkle{from{opacity:.45}to{opacity:1}}
+.pw-head{display:flex;align-items:center;gap:12px;padding:8px 6px 12px}
+.pw-head img{width:52px;height:52px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 2px var(--gold)}
+.pw-head .ttl{flex:1;min-width:0}
+.pw-head .ttl b{display:block;font-family:'Alfa Slab One';font-weight:400;font-size:18px;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pw-head .ttl span{font-family:Lobster;color:var(--gold2);font-size:16px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pw-btn{width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.4);background:rgba(7,13,38,.55);color:#fff;font-size:18px;cursor:pointer;flex:none}
+.pw-btn:hover{background:var(--red)}
+.pw-frame{position:relative;border-radius:18px;overflow:hidden;background:#0b1030;box-shadow:inset 0 0 0 2px rgba(247,201,72,.5)}
+.pw-frame iframe{display:block;width:100%;height:300px;border:0}
+.pw-snow{position:absolute;inset:0;pointer-events:none}
+.pw-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 6px 4px;font-size:13px;color:#e3e9ff;flex-wrap:wrap}
+.pw-foot a{color:var(--gold2);font-weight:700}
+/* minimized: stays playing, docks as a pill */
+.player-win.mini{left:auto;right:14px;top:auto;bottom:14px;width:auto;transform:none;padding:8px 10px;border-radius:99px}
+.player-win.mini .pw-frame{height:1px;width:1px;opacity:0;position:absolute;overflow:hidden}
+.player-win.mini .pw-foot,.player-win.mini .lights,.player-win.mini .pw-sub{display:none}
+.player-win.mini .pw-head{padding:0}
+.player-win.mini .pw-head img{width:38px;height:38px}
+.player-win.mini .pw-head .ttl b{font-size:14px}
+.player-win.mini .pw-head .ttl span{font-size:13px}
 
 /* SECTIONS with shaped gradient transitions */
 .sec{position:relative;padding:90px 0 110px}
@@ -224,6 +278,7 @@ footer .wave.top{position:absolute;top:-99px;left:0;width:100%;height:100px}
   <a class="brand" href="#top"><img id="navLogo" src="assets/logo-180.jpg" width="46" height="46" alt="That Christmas Channel logo"><span>That<b>Christmas</b>Channel</span></a>
   <ul id="menu">
     <li><a href="#countdown">Countdown</a></li>
+    <li><a href="#tracker">Santa Tracker</a></li>
     <li><a href="#hosts">Hosts</a></li>
     <li><a href="#listen">How To Listen</a></li>
     <li><a href="#games">Games</a></li>
@@ -231,7 +286,7 @@ footer .wave.top{position:absolute;top:-99px;left:0;width:100%;height:100px}
     <li><a href="https://emporium.myspreadshop.com">Shop</a></li>
   </ul>
   <button class="sound-btn" id="soundBtn" title="Sound effects on/off" aria-label="Toggle sound effects">🔔</button>
-  <a class="btn btn-red listen-nav" href="https://player.live365.com/a37180?1"><span class="live-dot"></span>Listen Live</a>
+  <a class="btn btn-red listen-nav" href="https://player.live365.com/a37180?1" data-player><span class="live-dot"></span>Listen Live</a>
   <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
 </header>
 
@@ -250,7 +305,7 @@ footer .wave.top{position:absolute;top:-99px;left:0;width:100%;height:100px}
     <h1>We Love <span class="script">Christmas!</span></h1>
     <p class="lead">The Biggest Hits of Christmas and More! Streaming every day of the year, powered by Live365.</p>
     <div class="cta-row">
-      <a class="btn btn-red" href="https://player.live365.com/a37180?1"><span class="live-dot"></span>Listen Live</a>
+      <a class="btn btn-red" href="https://player.live365.com/a37180?1" data-player><span class="live-dot"></span>Listen Live</a>
       <a class="btn btn-ghost" href="https://onlineradiobox.com/us/thatchristmaschannel/">🌍 Intl Listeners</a>
       <a class="btn btn-gold" href="#games">🎮 Play Games</a>
     </div>
@@ -276,6 +331,24 @@ footer .wave.top{position:absolute;top:-99px;left:0;width:100%;height:100px}
   </div>
 </section>
 
+<section class="sec sec-royal" id="tracker">
+  <svg class="wave top" viewBox="0 0 1440 110" preserveAspectRatio="none"><defs><linearGradient id="w8" x1="0" x2="1"><stop offset="0" stop-color="#182a78" stop-opacity=".85"/><stop offset=".5" stop-color="#2a4fd0" stop-opacity=".85"/><stop offset="1" stop-color="#182a78" stop-opacity=".85"/></linearGradient></defs><path fill="url(#w8)" d="M0,55 C150,95 330,100 520,65 C700,32 820,8 1000,30 C1180,52 1300,92 1440,60 L1440,110 L0,110 Z"/></svg>
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="kick">Where's Santa?</div><h2>Santa Tracker</h2><p>Santa's sleigh lifts off on Christmas Eve and reaches each city at local midnight. Spin the globe and follow along.</p></div>
+    <div class="tracker reveal">
+      <div class="globe3d"><canvas id="trackCanvas"></canvas><span class="gtag" id="trackTag">🎅 NORTH POLE</span></div>
+      <div class="tpanel">
+        <div class="tstat"><small>Status</small><strong class="gold" id="tStatus">At the North Pole</strong><div class="tbar"><i id="tBar"></i></div></div>
+        <div class="tstat"><small id="tNowLbl">Santa is at</small><strong id="tNow">Santa's Workshop</strong></div>
+        <div class="tstat"><small id="tNextLbl">Takeoff in</small><strong id="tNext">–</strong></div>
+        <div class="tstat"><small>Stops visited</small><strong id="tCount">0</strong></div>
+        <button class="btn btn-gold" id="tPreview">▶ Preview Santa's Flight</button>
+        <p class="tnote">A fun flight simulation timed to local midnight in each city. For the official tracker, visit <a href="https://www.noradsanta.org">NORAD Tracks Santa</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="sec sec-red" id="hosts">
   <svg class="wave top" viewBox="0 0 1440 110" preserveAspectRatio="none"><defs><linearGradient id="w2" x1="0" x2="1"><stop offset="0" stop-color="#6b0717" stop-opacity=".88"/><stop offset=".5" stop-color="#a50e28" stop-opacity=".88"/><stop offset="1" stop-color="#6b0717" stop-opacity=".88"/></linearGradient></defs><path fill="url(#w2)" d="M0,40 C160,90 300,100 470,70 C650,35 760,5 940,30 C1120,55 1260,100 1440,65 L1440,110 L0,110 Z"/></svg>
   <div class="wrap">
@@ -290,7 +363,7 @@ footer .wave.top{position:absolute;top:-99px;left:0;width:100%;height:100px}
   <div class="wrap">
     <div class="sec-head reveal"><div class="kick">At work, at home &amp; on the go</div><h2>How To Listen</h2></div>
     <div class="grid g3">
-      <div class="card tilt reveal"><div class="ic">📻</div><h3>Live365</h3><p>Our home base. Listen on the web player or search "That Christmas Channel" in the Live365 app.</p><a class="more" href="https://player.live365.com/a37180?1">Open the player →</a></div>
+      <div class="card tilt reveal"><div class="ic">📻</div><h3>Live365</h3><p>Our home base. Listen on the web player or search "That Christmas Channel" in the Live365 app.</p><a class="more" href="https://player.live365.com/a37180?1" data-player>Open the player →</a></div>
       <div class="card tilt reveal"><div class="ic">🌍</div><h3>International</h3><p>Listening outside the US? Tune in through OnlineRadioBox.</p><a class="more" href="https://onlineradiobox.com/us/thatchristmaschannel/">Intl listeners →</a></div>
       <div class="card tilt reveal"><div class="ic">📲</div><h3>Apps</h3><p>TuneIn, iHeart Radio, Audacy and Apple Music. Search for the station and save it as a favorite or preset.</p><a class="more" href="http://tunein.com/radio/That-Christmas-Channel-s220466">TuneIn →</a></div>
       <div class="card tilt reveal"><div class="ic">🗣️</div><h3>Smart Speakers</h3><p>Ask Alexa (or use our Alexa Skill), Google Assistant or Siri to play That Christmas Channel. Not working? Add "from TuneIn", "from Live365" or "from iHeart Radio".</p></div>
@@ -372,11 +445,24 @@ footer .wave.top{position:absolute;top:-99px;left:0;width:100%;height:100px}
   <svg class="wave top" viewBox="0 0 1440 100" preserveAspectRatio="none"><defs><linearGradient id="w7" x1="0" x2="1"><stop offset="0" stop-color="#040820"/><stop offset=".5" stop-color="#0a1440"/><stop offset="1" stop-color="#040820"/></linearGradient></defs><path fill="url(#w7)" d="M0,60 C80,30 140,30 200,55 C260,80 320,80 380,55 C460,22 540,25 620,55 C700,85 780,85 860,55 C940,25 1020,25 1100,55 C1180,85 1260,80 1340,55 C1390,40 1420,40 1440,45 L1440,100 L0,100 Z"/></svg>
   <div class="wrap foot">
     <div><h4>That Christmas Channel®</h4><p style="color:#cdd7f7">The Biggest Hits of Christmas and More! 24/7/365, powered by Live365.</p><p style="margin-top:10px;color:#cdd7f7">thatchristmaschannel@live365.com</p></div>
-    <div><h4>Listen</h4><a href="https://player.live365.com/a37180?1">Live365</a><a href="http://tunein.com/radio/That-Christmas-Channel-s220466">TuneIn</a><a href="https://onlineradiobox.com/us/thatchristmaschannel/">International</a><a href="https://thatchristmaschannel.com/news/">News</a><a href="https://thatchristmaschannel.com/about-us/#newsletter">Newsletter</a></div>
+    <div><h4>Listen</h4><a href="https://player.live365.com/a37180?1" data-player>Live365</a><a href="http://tunein.com/radio/That-Christmas-Channel-s220466">TuneIn</a><a href="https://onlineradiobox.com/us/thatchristmaschannel/">International</a><a href="https://thatchristmaschannel.com/news/">News</a><a href="https://thatchristmaschannel.com/about-us/#newsletter">Newsletter</a></div>
     <div><h4>Follow</h4><a href="https://www.facebook.com/That-Christmas-Channel-243894509007889/">Facebook</a><a href="https://www.instagram.com/thatchristmaschannel/">Instagram</a><a href="https://thatchristmaschannel.com/feedback">Contact</a><a href="https://thatchristmaschannel.com/privacy">Privacy</a><a href="https://thatchristmaschannel.com/privacy-policy-2">Cookies</a></div>
   </div>
   <div class="wrap copy">©2026 Boss Radio Networks / BBR Productions, Inc. All rights reserved.</div>
 </footer>
+
+<div class="pl-back" id="plBack"></div>
+<div class="player-win" id="playerWin" role="dialog" aria-label="That Christmas Channel live player" aria-hidden="true">
+  <div class="lights" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="pw-head">
+    <img src="assets/logo-180.jpg" alt="">
+    <div class="ttl"><b>That Christmas Channel</b><span class="pw-sub">Live · 24/7/365 Christmas Music</span></div>
+    <button class="pw-btn" id="pwMin" title="Minimize: keep listening while you browse" aria-label="Minimize player">▾</button>
+    <button class="pw-btn" id="pwClose" title="Close player (stops music)" aria-label="Close player">✕</button>
+  </div>
+  <div class="pw-frame"><iframe id="pwFrame" title="Live365 player" allow="autoplay; encrypted-media" loading="lazy"></iframe><canvas class="pw-snow" id="pwSnow"></canvas></div>
+  <div class="pw-foot"><span>🎄 Press play. Tap ▾ to keep listening while you browse.</span><a href="https://player.live365.com/a37180?1">Open full player ↗</a></div>
+</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
@@ -532,6 +618,158 @@ try{ if(window.THREE && !reduce){startThree()} else start2D() }catch(e){start2D(
     x.restore();requestAnimationFrame(draw);
   }
   requestAnimationFrame(draw);
+})();
+
+
+/* ---------- ONE-LINE HERO HEADING ---------- */
+function fitHead(){const h=$('.hero-copy h1');if(!h)return;const box=h.parentElement;let s=96;h.style.fontSize=s+'px';
+  while(h.scrollWidth>box.clientWidth&&s>22){s-=2;h.style.fontSize=s+'px'}}
+fitHead();addEventListener('resize',fitHead);document.fonts&&document.fonts.ready.then(fitHead);
+
+/* ---------- POP-UP LIVE PLAYER ---------- */
+(function(){
+  const win=$('#playerWin'),back=$('#plBack'),fr=$('#pwFrame');
+  const SRC='https://live365.com/embed/player.html?station=a37180&s=xl&m=dark';
+  function open(e){if(e)e.preventDefault();if(!fr.src)fr.src=SRC;win.classList.remove('mini');win.classList.add('on');back.classList.add('on');win.setAttribute('aria-hidden','false');$('#pwMin').textContent='▾';chime(1047,.4)}
+  function mini(){win.classList.add('mini');back.classList.remove('on');$('#pwMin').textContent='▴'}
+  function close(){win.classList.remove('on','mini');back.classList.remove('on');win.setAttribute('aria-hidden','true');setTimeout(()=>{fr.removeAttribute('src')},350)}
+  document.addEventListener('click',e=>{const a=e.target.closest('a[data-player]');if(a)open(e)});
+  $('#pwMin').onclick=()=>win.classList.contains('mini')?open():mini();
+  $('#pwClose').onclick=close; back.onclick=mini;
+  win.addEventListener('click',e=>{if(win.classList.contains('mini')&&!e.target.closest('button'))open()});
+  addEventListener('keydown',e=>{if(e.key==='Escape'&&win.classList.contains('on')&&!win.classList.contains('mini'))mini()});
+  // snow drifting over the player frame edges
+  const cv=$('#pwSnow'),x=cv.getContext('2d');const fl=[];for(let i=0;i<28;i++)fl.push({x:Math.random(),y:Math.random(),r:1+Math.random()*2.2,s:.0015+Math.random()*.002});
+  (function f(){if(win.classList.contains('on')&&!win.classList.contains('mini')){const W=cv.width=cv.clientWidth,H=cv.height=cv.clientHeight;x.clearRect(0,0,W,H);x.fillStyle='rgba(255,255,255,.7)';
+    for(const o of fl){o.y+=o.s;if(o.y>1)o.y=0;const X=o.x*W+Math.sin(o.y*12+o.r)*6;if(X>30&&X<W-30&&o.y>.08&&o.y<.92)continue;x.beginPath();x.arc(X,o.y*H,o.r,0,7);x.fill()}}
+    requestAnimationFrame(f)})();
+})();
+
+/* ---------- SANTA TRACKER ---------- */
+(function(){
+  // [city, lat, lon, UTC offset in December]
+  const C=[["Kiritimati, Kiribati",1.87,-157.4,14],["Auckland, New Zealand",-36.85,174.76,13],["Suva, Fiji",-18.14,178.44,12],["Sydney, Australia",-33.87,151.21,11],["Brisbane, Australia",-27.47,153.03,10],
+  ["Tokyo, Japan",35.68,139.69,9],["Seoul, South Korea",37.57,126.98,9],["Beijing, China",39.9,116.41,8],["Manila, Philippines",14.6,120.98,8],["Jakarta, Indonesia",-6.21,106.85,7],["Bangkok, Thailand",13.76,100.5,7],
+  ["New Delhi, India",28.61,77.21,5.5],["Dubai, UAE",25.2,55.27,4],["Moscow, Russia",55.76,37.62,3],["Nairobi, Kenya",-1.29,36.82,3],["Cairo, Egypt",30.04,31.24,2],["Johannesburg, South Africa",-26.2,28.05,2],["Athens, Greece",37.98,23.73,2],
+  ["Berlin, Germany",52.52,13.4,1],["Rome, Italy",41.9,12.5,1],["Paris, France",48.86,2.35,1],["Lagos, Nigeria",6.52,3.38,1],["London, UK",51.51,-.13,0],["Reykjavík, Iceland",64.15,-21.94,0],
+  ["Rio de Janeiro, Brazil",-22.91,-43.17,-3],["Buenos Aires, Argentina",-34.6,-58.38,-3],["Halifax, Canada",44.65,-63.57,-4],["New York, USA",40.71,-74.01,-5],["Toronto, Canada",43.65,-79.38,-5],
+  ["Chicago, USA",41.88,-87.63,-6],["Mexico City, Mexico",19.43,-99.13,-6],["Denver, USA",39.74,-104.99,-7],["Los Angeles, USA",34.05,-118.24,-8],["Sacramento, USA",38.58,-121.49,-8],
+  ["Anchorage, USA",61.22,-149.9,-9],["Honolulu, USA",21.31,-157.86,-10],["Pago Pago, American Samoa",-14.28,-170.7,-11]];
+  const POLE=["North Pole",90,0];
+  function schedule(year){const st=[];let prevOff=null,k=0;
+    for(const c of C){k=(c[3]===prevOff)?k+1:0;prevOff=c[3];st.push({name:c[0],lat:c[1],lon:c[2],t:Date.UTC(year,11,25,0,0)-c[3]*3600e3+k*8*60e3})}
+    return{stops:st,takeoff:st[0].t-45*60e3,home:st[st.length-1].t+90*60e3}}
+  function curYear(){const n=new Date();const y=n.getUTCFullYear();const s=schedule(y);return Date.now()>s.home+864e5?y+1:y}
+  let S=schedule(curYear());
+  const v3=(lat,lon,r)=>{const a=lat*Math.PI/180,b=lon*Math.PI/180;return[r*Math.cos(a)*Math.sin(b),r*Math.sin(a),r*Math.cos(a)*Math.cos(b)]};
+  function slerp(p,q,f){const d=Math.max(-1,Math.min(1,p[0]*q[0]+p[1]*q[1]+p[2]*q[2]));const w=Math.acos(d);if(w<1e-4)return p.slice();const s=Math.sin(w),A=Math.sin((1-f)*w)/s,B=Math.sin(f*w)/s;return[p[0]*A+q[0]*B,p[1]*A+q[1]*B,p[2]*A+q[2]*B]}
+  // state at time T: returns {phase, idx(last visited), frac, pos(unit vec)}
+  function state(T){const st=S.stops;
+    if(T<S.takeoff)return{phase:'pre',idx:-1,pos:v3(90,0,1)};
+    if(T>=S.home)return{phase:'done',idx:st.length-1,pos:v3(90,0,1)};
+    if(T<st[0].t){const f=(T-S.takeoff)/(st[0].t-S.takeoff);return{phase:'fly',idx:-1,next:0,f,pos:slerp(v3(90,0,1),v3(st[0].lat,st[0].lon,1),f)}}
+    let i=0;while(i<st.length-1&&T>=st[i+1].t)i++;
+    if(i===st.length-1){const f=(T-st[i].t)/(S.home-st[i].t);return{phase:'home',idx:i,f,pos:slerp(v3(st[i].lat,st[i].lon,1),v3(90,0,1),f)}}
+    const seg=st[i+1].t-st[i].t,f=(T-st[i].t)/seg,dwell=Math.min(.35,(4*60e3)/seg);
+    if(f<dwell)return{phase:'deliver',idx:i,next:i+1,f:0,pos:v3(st[i].lat,st[i].lon,1)};
+    const g=(f-dwell)/(1-dwell);return{phase:'fly',idx:i,next:i+1,f:g,pos:slerp(v3(st[i].lat,st[i].lon,1),v3(st[i+1].lat,st[i+1].lon,1),g)}}
+  // preview mode compresses the whole night into ~70s
+  let preview=null;
+  $('#tPreview').onclick=()=>{preview={start:performance.now(),dur:70000};$('#tPreview').textContent='⟲ Restart Preview';chime(880)};
+  function simTime(){if(!preview)return Date.now();const f=(performance.now()-preview.start)/preview.dur;if(f>=1){preview=null;$('#tPreview').textContent='▶ Preview Santa\'s Flight';return Date.now()}return S.takeoff+f*(S.home-S.takeoff)}
+  const fmt=ms=>{let s=Math.max(0,Math.floor(ms/1000));const d=Math.floor(s/86400);s%=86400;const h=Math.floor(s/3600);s%=3600;const m=Math.floor(s/60);s%=60;return (d?d+'d ':'')+String(h).padStart(2,'0')+'h '+String(m).padStart(2,'0')+'m '+String(s).padStart(2,'0')+'s'};
+  const localT=ms=>new Date(ms).toLocaleTimeString([],{hour:'numeric',minute:'2-digit'});
+  let lastUI=0,stCache;
+  function ui(T,s){const st=S.stops;$('#tCount').textContent=(s.phase==='pre'?0:s.idx+1)+' / '+st.length;
+    const pct=s.phase==='pre'?0:s.phase==='done'?100:Math.min(100,(T-S.takeoff)/(S.home-S.takeoff)*100);$('#tBar').style.width=pct+'%';
+    const tag=$('#trackTag');
+    if(s.phase==='pre'){ $('#tStatus').textContent='Loading the sleigh 🎁';$('#tNowLbl').textContent='Santa is at';$('#tNow').textContent="Santa's Workshop, North Pole";$('#tNextLbl').textContent='Takeoff in';$('#tNext').textContent=fmt(S.takeoff-T);tag.textContent='🎅 NORTH POLE'}
+    else if(s.phase==='done'){ $('#tStatus').textContent='Back home, resting ☕';$('#tNowLbl').textContent='Santa is at';$('#tNow').textContent='North Pole';$('#tNextLbl').textContent='Next flight';$('#tNext').textContent='Christmas Eve';tag.textContent='🎅 HOME SAFE'}
+    else if(s.phase==='home'){ $('#tStatus').textContent='Heading home 🦌';$('#tNowLbl').textContent='Last stop';$('#tNow').textContent=st[s.idx].name;$('#tNextLbl').textContent='Next stop';$('#tNext').textContent='North Pole';tag.textContent='🦌 FLYING NORTH'}
+    else if(s.phase==='deliver'){ $('#tStatus').textContent='Delivering presents! 🎁';$('#tNowLbl').textContent='Santa is in';$('#tNow').textContent=st[s.idx].name;$('#tNextLbl').textContent='Next stop';$('#tNext').textContent=st[s.next].name+(preview?'':' · '+localT(st[s.next].t));tag.textContent='🎁 '+st[s.idx].name.split(',')[0].toUpperCase()}
+    else { $('#tStatus').textContent='In flight 🛷';$('#tNowLbl').textContent=s.idx<0?'Departed':'Last stop';$('#tNow').textContent=s.idx<0?'North Pole':st[s.idx].name;$('#tNextLbl').textContent='Next stop';$('#tNext').textContent=st[s.next].name+(preview?'':' · '+localT(st[s.next].t));tag.textContent='🛷 EN ROUTE TO '+st[s.next].name.split(',')[0].toUpperCase()}
+  }
+  const cv=$('#trackCanvas');
+  // 2D canvas globe (used when WebGL/three.js is unavailable)
+  function run2D(){const x=cv.getContext('2d');let yaw=0,pitch=.5,uy=0,up=0,drag=null,idle=0;
+    cv.addEventListener('pointerdown',e=>{drag={x:e.clientX,y:e.clientY};cv.setPointerCapture(e.pointerId)});
+    cv.addEventListener('pointermove',e=>{if(!drag)return;uy+=(e.clientX-drag.x)*.008;up+=(e.clientY-drag.y)*.006;up=Math.max(-1,Math.min(1,up));drag={x:e.clientX,y:e.clientY};idle=performance.now()});
+    cv.addEventListener('pointerup',()=>drag=null);
+    const rot=v=>{const cy=Math.cos(yaw),sy=Math.sin(yaw),cp=Math.cos(pitch),sp=Math.sin(pitch);const X=v[0]*cy+v[2]*sy,Z0=-v[0]*sy+v[2]*cy;return[X,v[1]*cp-Z0*sp,v[1]*sp+Z0*cp]};
+    (function f(now){requestAnimationFrame(f);const dpr=Math.min(devicePixelRatio,2),W=cv.clientWidth,H=cv.clientHeight;if(cv.width!==W*dpr){cv.width=W*dpr;cv.height=H*dpr}
+      x.setTransform(dpr,0,0,dpr,0,0);x.clearRect(0,0,W,H);const T=simTime(),s=state(T),p=s.pos;
+      const lat=Math.asin(Math.max(-1,Math.min(1,p[1]))),lon=Math.atan2(p[0],p[2]);
+      if(performance.now()-idle>2500){uy*=.97;up*=.97}
+      let d=-lon+uy-yaw;d=Math.atan2(Math.sin(d),Math.cos(d));yaw+=d*.05;pitch+=(Math.min(.9,Math.max(-.6,lat*.8))+up-pitch)*.05;
+      const r=Math.min(W,H)*.38,cx=W/2,cy=H/2,P=v=>{const q=rot(v);return[cx+q[0]*r,cy-q[1]*r,q[2]]};
+      const g=x.createRadialGradient(cx-r*.3,cy-r*.3,r*.1,cx,cy,r);g.addColorStop(0,'#2a4fd0');g.addColorStop(1,'#0c1a50');
+      x.shadowColor='rgba(120,170,255,.6)';x.shadowBlur=40;x.fillStyle=g;x.beginPath();x.arc(cx,cy,r,0,7);x.fill();x.shadowBlur=0;
+      x.strokeStyle='rgba(140,170,255,.25)';x.lineWidth=1;
+      const line=pts=>{x.beginPath();let pen=false;for(const v of pts){const q=P(v);if(q[2]>0){pen?x.lineTo(q[0],q[1]):x.moveTo(q[0],q[1]);pen=true}else pen=false}x.stroke()};
+      for(let la=-75;la<=75;la+=15){const a=[];for(let lo=0;lo<=360;lo+=5)a.push(v3(la,lo,1));line(a)}
+      for(let lo=0;lo<360;lo+=15){const a=[];for(let la=-90;la<=90;la+=5)a.push(v3(la,lo,1));line(a)}
+      // trail
+      x.strokeStyle='#ff4d6d';x.lineWidth=2.5;const st=S.stops,pts=[v3(90,0,1),...st.map(c=>v3(c.lat,c.lon,1))],tm=[S.takeoff,...st.map(c=>c.t)],tr=[];
+      for(let i=0;i<pts.length-1;i++){if(T<=tm[i])break;const e=Math.min(1,(T-tm[i])/(tm[i+1]-tm[i]));for(let k=0;k<=16;k++)tr.push(slerp(pts[i],pts[i+1],k/16*e))}
+      line(tr);
+      st.forEach((c,i)=>{const q=P(v3(c.lat,c.lon,1));if(q[2]<=0)return;const on=s.phase!=='pre'&&i<=s.idx;x.fillStyle=on?'#ff3355':'#f7c948';x.beginPath();x.arc(q[0],q[1],on?4:3,0,7);x.fill()});
+      const pq=P(v3(90,0,1));if(pq[2]>0){x.font='18px serif';x.textAlign='center';x.fillText('🏠',pq[0],pq[1])}
+      const q=P(p);if(q[2]>-.2){const gl=x.createRadialGradient(q[0],q[1],2,q[0],q[1],26);gl.addColorStop(0,'rgba(255,220,120,.9)');gl.addColorStop(1,'rgba(255,220,120,0)');x.fillStyle=gl;x.beginPath();x.arc(q[0],q[1],26,0,7);x.fill();
+        x.font='30px serif';x.textAlign='center';x.textBaseline='middle';x.fillText('🎅',q[0],q[1]-6)}
+      if(now-lastUI>250){ui(T,s);lastUI=now}})(0)}
+  if(!window.THREE){run2D();return}
+  let renderer;try{renderer=new THREE.WebGLRenderer({canvas:cv,antialias:true,alpha:true})}catch(e){run2D();return}
+  renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+  const scene=new THREE.Scene(),cam=new THREE.PerspectiveCamera(40,1,.1,100);cam.position.set(0,0,17);
+  const R=5,G=new THREE.Group();scene.add(G);
+  G.add(new THREE.Mesh(new THREE.SphereGeometry(R,64,48),new THREE.MeshPhongMaterial({color:0x132a72,emissive:0x0a1846,shininess:30,specular:0x3355aa})));
+  const gl=[];for(let la=-75;la<=75;la+=15){for(let lo=0;lo<360;lo+=4){gl.push(...v3(la,lo,R*1.002),...v3(la,lo+4,R*1.002))}}
+  for(let lo=0;lo<360;lo+=15){for(let la=-90;la<90;la+=4){gl.push(...v3(la,lo,R*1.002),...v3(la+4,lo,R*1.002))}}
+  const lg=new THREE.BufferGeometry();lg.setAttribute('position',new THREE.Float32BufferAttribute(gl,3));
+  G.add(new THREE.LineSegments(lg,new THREE.LineBasicMaterial({color:0x6f8fff,transparent:true,opacity:.22})));
+  // atmosphere glow
+  const gc=document.createElement('canvas');gc.width=gc.height=256;const gx=gc.getContext('2d');const gg=gx.createRadialGradient(128,128,88,128,128,128);gg.addColorStop(0,'rgba(120,170,255,.55)');gg.addColorStop(1,'rgba(120,170,255,0)');gx.fillStyle=gg;gx.fillRect(0,0,256,256);
+  const glow=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(gc),transparent:true,depthWrite:false}));glow.scale.set(R*2.9,R*2.9,1);scene.add(glow);
+  scene.add(new THREE.AmbientLight(0x8899ff,.7));const sun=new THREE.DirectionalLight(0xfff1cc,.9);sun.position.set(-6,5,10);scene.add(sun);
+  // North Pole marker
+  const pole=new THREE.Mesh(new THREE.ConeGeometry(.18,.7,12),new THREE.MeshStandardMaterial({color:0xc8102e,emissive:0x550010}));pole.position.set(0,R+.3,0);G.add(pole);
+  // cities
+  const dotGeo=new THREE.SphereGeometry(.07,10,8),dots=S.stops.map(c=>{const m=new THREE.Mesh(dotGeo,new THREE.MeshBasicMaterial({color:0xf7c948}));m.position.set(...v3(c.lat,c.lon,R*1.01));G.add(m);return m});
+  // santa sprite
+  const sc=document.createElement('canvas');sc.width=sc.height=128;const sx=sc.getContext('2d');const sg=sx.createRadialGradient(64,64,10,64,64,64);sg.addColorStop(0,'rgba(255,220,120,.9)');sg.addColorStop(1,'rgba(255,220,120,0)');sx.fillStyle=sg;sx.fillRect(0,0,128,128);sx.font='64px serif';sx.textAlign='center';sx.textBaseline='middle';sx.fillText('🎅',64,68);
+  const santa=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(sc),transparent:true,depthTest:false}));santa.scale.set(1.3,1.3,1);G.add(santa);
+  // trail
+  const MAXT=4000,tp=new Float32Array(MAXT*3),tg=new THREE.BufferGeometry();tg.setAttribute('position',new THREE.BufferAttribute(tp,3));tg.setDrawRange(0,0);
+  G.add(new THREE.Line(tg,new THREE.LineBasicMaterial({color:0xff4d6d,transparent:true,opacity:.9})));
+  function buildTrail(T){let n=0;const push=v=>{if(n<MAXT){tp[n*3]=v[0]*R*1.04;tp[n*3+1]=v[1]*R*1.04;tp[n*3+2]=v[2]*R*1.04;n++}};
+    const st=S.stops;const pts=[v3(90,0,1),...st.map(c=>v3(c.lat,c.lon,1))];const times=[S.takeoff,...st.map(c=>c.t)];
+    for(let i=0;i<pts.length-1;i++){if(T<=times[i])break;const end=Math.min(1,(T-times[i])/(times[i+1]-times[i]));for(let k=0;k<=20;k++){const f=k/20*end;push(slerp(pts[i],pts[i+1],f))}}
+    tg.setDrawRange(0,n);tg.attributes.position.needsUpdate=true}
+  function size(){const b=cv.getBoundingClientRect();renderer.setSize(b.width,b.height,false);cam.aspect=b.width/b.height;cam.updateProjectionMatrix();cam.position.z=b.width<500?19:16}
+  size();addEventListener('resize',size);
+  // drag to spin
+  let drag=null,userYaw=0,userPitch=0,idleT=0;
+  cv.addEventListener('pointerdown',e=>{drag={x:e.clientX,y:e.clientY};cv.setPointerCapture(e.pointerId)});
+  cv.addEventListener('pointermove',e=>{if(!drag)return;userYaw+=(e.clientX-drag.x)*.008;userPitch+=(e.clientY-drag.y)*.006;userPitch=Math.max(-1,Math.min(1,userPitch));drag={x:e.clientX,y:e.clientY};idleT=performance.now()});
+  cv.addEventListener('pointerup',()=>drag=null);cv.addEventListener('pointercancel',()=>drag=null);
+  let yaw=0,pitch=.5,visible=true;
+  new IntersectionObserver(es=>visible=es[0].isIntersecting).observe(cv);
+  function loop(now){requestAnimationFrame(loop);if(!visible)return;
+    const T=simTime(),s=state(T);
+    const p=s.pos;const lat=Math.asin(Math.max(-1,Math.min(1,p[1]))),lon=Math.atan2(p[0],p[2]);
+    const hop=s.phase==='fly'||s.phase==='home'?Math.sin(Math.PI*(s.f||0))*.35:0;
+    santa.position.set(p[0]*(R+.55+hop),p[1]*(R+.55+hop),p[2]*(R+.55+hop));
+    S.stops.forEach((c,i)=>{const on=s.phase!=='pre'&&i<=s.idx;dots[i].material.color.setHex(on?0xff3355:0xf7c948);dots[i].scale.setScalar(on?1.6:1)});
+    buildTrail(T);
+    // follow santa unless user recently dragged
+    const follow=performance.now()-idleT>2500;
+    let ty=-lon+userYaw,tpch=Math.min(.9,Math.max(-.6,lat*.8))+userPitch;
+    if(follow){userYaw*=.97;userPitch*=.97}
+    let d=ty-yaw;d=Math.atan2(Math.sin(d),Math.cos(d));yaw+=d*.05;pitch+=(tpch-pitch)*.05;
+    G.rotation.set(pitch,yaw,0,'XYZ');
+    if(now-lastUI>250){ui(T,s);lastUI=now}
+    renderer.render(scene,cam)}
+  requestAnimationFrame(loop);
 })();
 
 /* ---------- COUNTDOWN ---------- */
