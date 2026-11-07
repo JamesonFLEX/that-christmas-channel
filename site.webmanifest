@@ -1,13 +1,23 @@
 {
+  "id": "./",
   "name": "That Christmas Channel",
   "short_name": "Christmas Channel",
-  "description": "The Biggest Hits of Christmas and More! 24/7/365 Christmas music.",
-  "start_url": "./",
+  "description": "The Biggest Hits of Christmas and More! 24/7/365 Christmas music, Santa Tracker, games and song requests.",
+  "start_url": "./?source=app",
+  "scope": "./",
   "display": "standalone",
+  "orientation": "portrait",
   "background_color": "#070d26",
   "theme_color": "#070d26",
+  "categories": ["music", "entertainment"],
   "icons": [
-    {"src": "assets/icon-192.png", "sizes": "192x192", "type": "image/png"},
-    {"src": "assets/icon-512.png", "sizes": "512x512", "type": "image/png"}
+    {"src": "assets/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
+    {"src": "assets/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"},
+    {"src": "assets/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ],
+  "shortcuts": [
+    {"name": "Santa Tracker", "url": "./#tracker", "icons": [{"src": "assets/icon-192.png", "sizes": "192x192"}]},
+    {"name": "Play Games", "url": "./#games", "icons": [{"src": "assets/icon-192.png", "sizes": "192x192"}]},
+    {"name": "Request a Song", "url": "./#request", "icons": [{"src": "assets/icon-192.png", "sizes": "192x192"}]}
   ]
 }

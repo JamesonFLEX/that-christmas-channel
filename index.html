@@ -7,6 +7,11 @@
 <meta name="description" content="The Biggest Hits of Christmas and More! 24/7/365 Christmas music powered by Live365. Listen live, meet your holiday hosts, request a song and play Christmas games.">
 <link rel="canonical" href="https://jamesonflex.github.io/that-christmas-channel/">
 <meta name="theme-color" content="#070d26">
+<meta name="application-name" content="Christmas Channel">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Christmas Channel">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <!-- Link previews: Facebook, Messenger, iMessage, WhatsApp, LinkedIn, Slack, Discord, Telegram -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="That Christmas Channel">
@@ -159,6 +164,20 @@ h1,h2,h3{font-family:'Alfa Slab One',serif;font-weight:400;letter-spacing:.5px;l
 .player-win.mini .pw-head img{width:38px;height:38px}
 .player-win.mini .pw-head .ttl b{font-size:14px}
 .player-win.mini .pw-head .ttl span{font-size:13px}
+
+
+/* INSTALL APP */
+.app-standalone .install-btn,.app-standalone .install-li{display:none!important}
+.inst-win{position:fixed;z-index:96;left:50%;top:50%;width:min(440px,92vw);transform:translate(-50%,-46%) scale(.94);opacity:0;pointer-events:none;transition:all .35s cubic-bezier(.2,.8,.2,1);border-radius:28px;padding:22px;text-align:center;
+  background:linear-gradient(160deg,rgba(255,255,255,.22),rgba(255,255,255,.07));backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.35);box-shadow:0 30px 80px rgba(0,0,0,.55)}
+.inst-win.on{opacity:1;pointer-events:auto;transform:translate(-50%,-50%) scale(1)}
+.inst-win img{width:110px;height:110px;border-radius:26px;box-shadow:0 0 0 3px var(--gold),0 12px 30px rgba(0,0,0,.5)}
+.inst-win h3{font-size:24px;margin:14px 0 4px;color:#fff}
+.inst-win p{color:#dbe5ff;font-size:15px}
+.inst-win ol{text-align:left;margin:14px 0 6px;padding-left:0;list-style:none;counter-reset:s}
+.inst-win li{counter-increment:s;display:flex;gap:12px;align-items:center;padding:10px 12px;margin-bottom:8px;border-radius:14px;background:rgba(7,13,38,.6);color:#fff;font-weight:600}
+.inst-win li:before{content:counter(s);flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--gold);color:var(--ink);font-weight:800}
+.inst-win .x{position:absolute;top:12px;right:12px}
 
 /* SECTIONS with shaped gradient transitions */
 .sec{position:relative;padding:90px 0 110px}
@@ -357,6 +376,7 @@ footer .wave.top{position:absolute;top:-99px;left:0;width:100%;height:100px}
     <li><a href="#games">Games</a></li>
     <li><a href="#request">Request a Song</a></li>
     <li><a href="https://emporium.myspreadshop.com">Shop</a></li>
+    <li class="install-li"><a href="#" class="install-btn">📲 Install App</a></li>
   </ul>
   <button class="sound-btn" id="soundBtn" title="Sound effects on/off" aria-label="Toggle sound effects">🔔</button>
   <a class="btn btn-red listen-nav" href="https://player.live365.com/a37180?1" data-player><span class="live-dot"></span>Listen Live</a>
@@ -381,6 +401,7 @@ footer .wave.top{position:absolute;top:-99px;left:0;width:100%;height:100px}
       <a class="btn btn-red" href="https://player.live365.com/a37180?1" data-player><span class="live-dot"></span>Listen Live</a>
       <a class="btn btn-ghost" href="https://onlineradiobox.com/us/thatchristmaschannel/">🌍 Intl Listeners</a>
       <a class="btn btn-gold" href="#games">🎮 Play Games</a>
+      <button class="btn btn-ghost install-btn" type="button">📲 Install the App</button>
     </div>
     <div class="onair">
       <span class="badge"><span class="live-dot"></span>ON AIR</span>
@@ -517,10 +538,17 @@ footer .wave.top{position:absolute;top:-99px;left:0;width:100%;height:100px}
     <div><h4>Listen</h4><a href="https://player.live365.com/a37180?1" data-player>Live365</a><a href="http://tunein.com/radio/That-Christmas-Channel-s220466">TuneIn</a><a href="https://onlineradiobox.com/us/thatchristmaschannel/">International</a><a href="https://thatchristmaschannel.com/news/">News</a><a href="https://thatchristmaschannel.com/about-us/#newsletter">Newsletter</a></div>
     <div><h4>Follow</h4><a href="https://www.facebook.com/That-Christmas-Channel-243894509007889/">Facebook</a><a href="https://www.instagram.com/thatchristmaschannel/">Instagram</a><a href="https://thatchristmaschannel.com/feedback">Contact</a><a href="https://thatchristmaschannel.com/privacy">Privacy</a><a href="https://thatchristmaschannel.com/privacy-policy-2">Cookies</a></div>
   </div>
-  <div class="wrap copy">©2026 Boss Radio Networks / BBR Productions, Inc. All rights reserved.</div>
+  <div class="wrap copy">©2026 Boss Radio Networks / BBR Productions, Inc. All rights reserved.<br><button class="btn btn-gold install-btn" type="button" style="margin:16px 0 8px">📲 Get the That Christmas Channel App</button><br><span style="opacity:.6;font-size:11px">Version 2026.11.07-1330</span></div>
 </footer>
 
 <div class="pl-back" id="plBack"></div>
+<div class="inst-win" id="instWin" role="dialog" aria-label="Install the app" aria-hidden="true">
+  <button class="pw-btn x" id="instClose" aria-label="Close">✕</button>
+  <img src="assets/icon-192.png" alt="That Christmas Channel app icon">
+  <h3>Get the App 🎄</h3>
+  <p>Put That Christmas Channel on your home screen for one-tap Christmas music.</p>
+  <ol id="instSteps"></ol>
+</div>
 <div class="player-win" id="playerWin" role="dialog" aria-label="That Christmas Channel live player" aria-hidden="true">
   <div class="lights" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
   <div class="pw-head">
@@ -689,6 +717,30 @@ try{ if(window.THREE && !reduce){startThree()} else start2D() }catch(e){start2D(
   requestAnimationFrame(draw);
 })();
 
+
+
+/* ---------- INSTALL AS APP (PWA) ---------- */
+(function(){
+  const standalone=matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;
+  if(standalone)document.documentElement.classList.add('app-standalone');
+  if('serviceWorker' in navigator&&location.protocol==='https:')navigator.serviceWorker.register('sw.js').catch(()=>{});
+  let deferred=null;
+  addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferred=e});
+  addEventListener('appinstalled',()=>{deferred=null;document.documentElement.classList.add('app-standalone');chime(1319,.5)});
+  const ua=navigator.userAgent,iOS=/iPhone|iPad|iPod/.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1),
+        inApp=/FBAN|FBAV|FB_IAB|Messenger|Instagram|Line\/|TikTok|Snapchat/i.test(ua),android=/Android/i.test(ua);
+  const win=$('#instWin'),back=$('#plBack');
+  function show(steps){$('#instSteps').innerHTML=steps.map(s=>`<li><span>${s}</span></li>`).join('');win.classList.add('on');back.classList.add('on');win.setAttribute('aria-hidden','false')}
+  function hide(){win.classList.remove('on');if(!$('#playerWin').classList.contains('on')||$('#playerWin').classList.contains('mini'))back.classList.remove('on');win.setAttribute('aria-hidden','true')}
+  $('#instClose').onclick=hide;back.addEventListener('click',hide);
+  document.addEventListener('click',async e=>{const b=e.target.closest('.install-btn');if(!b)return;e.preventDefault();$('#menu').classList.remove('open');
+    if(deferred){deferred.prompt();const r=await deferred.userChoice.catch(()=>null);deferred=null;if(r&&r.outcome==='accepted')chime(1319,.5);return}
+    if(inApp)return show([iOS?'Tap <b>⋯</b> (top right) and choose <b>Open in Safari</b>':'Tap <b>⋮</b> (top right) and choose <b>Open in Chrome</b>','Then tap <b>📲 Install the App</b> again']);
+    if(iOS)return show(['Tap the <b>Share</b> button <b>⬆️</b> in Safari','Scroll down and tap <b>Add to Home Screen</b>','Tap <b>Add</b>. The 🎄 icon appears on your home screen']);
+    if(android)return show(['Tap the <b>⋮</b> menu in Chrome','Tap <b>Install app</b> or <b>Add to Home screen</b>','Tap <b>Install</b>. Find the icon on your home screen']);
+    show(['In Chrome or Edge, click the <b>install icon</b> in the address bar','Or open the browser menu and choose <b>Install That Christmas Channel</b>']);
+  });
+})();
 
 /* ---------- ONE-LINE HERO HEADING ---------- */
 function fitHead(){const h=$('.hero-copy h1');if(!h)return;const box=h.parentElement;let s=96;h.style.fontSize=s+'px';
