@@ -1,7 +1,7 @@
 // That Christmas Channel service worker
 // Pages: network first (always shows the newest version when online, cached copy when offline).
 // Images/fonts/scripts: cache first, refreshed in the background.
-const VERSION = 'tcc-v20261107-1330';
+const VERSION = 'tcc-v20261107-1345';
 const CORE = ['./', './index.html', './site.webmanifest', './assets/logo.jpg', './assets/logo-180.jpg', './assets/icon-192.png', './assets/icon-512.png'];
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(VERSION).then(c => c.addAll(CORE)).then(() => self.skipWaiting()));
