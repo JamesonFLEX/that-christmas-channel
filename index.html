@@ -58,8 +58,9 @@ h1,h2,h3{font-family:'Alfa Slab One',serif;font-weight:400;letter-spacing:.5px;l
 .nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;gap:14px;padding:10px 2.5vw;background:linear-gradient(180deg,rgba(7,13,38,.92),rgba(7,13,38,.55));backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(247,201,72,.18)}
 .nav .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
 .nav .brand img{width:46px;height:46px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 2px var(--gold),0 0 18px rgba(247,201,72,.5)}
-.nav .brand span{font-family:'Alfa Slab One';font-size:15px;line-height:1.05;color:var(--snow)}
-.nav .brand span b{display:block;font-family:Lobster;font-weight:400;color:var(--gold);font-size:17px}
+.nav .brand span{font-family:'Alfa Slab One';font-size:17px;line-height:1;color:var(--snow);white-space:nowrap}
+.nav .brand span b{font-family:Lobster;font-weight:400;color:var(--gold);font-size:1.2em;margin:0 .22em}
+@media (max-width:420px){.nav .brand span{font-size:14px}.nav .brand img{width:40px;height:40px}}
 .nav ul{display:flex;gap:4px;list-style:none;margin-left:auto}
 .nav ul a{display:block;padding:8px 12px;border-radius:99px;text-decoration:none;font-weight:600;font-size:14px;color:#dfe7ff;transition:.2s}
 .nav ul a:hover{background:rgba(255,255,255,.1);color:#fff}
