@@ -566,7 +566,7 @@ footer .wave.top{position:absolute;top:-99px;left:0;width:100%;height:100px}
     <div><h4>Listen</h4><a href="https://player.live365.com/a37180?1" data-player>Live365</a><a href="http://tunein.com/radio/That-Christmas-Channel-s220466">TuneIn</a><a href="https://onlineradiobox.com/us/thatchristmaschannel/">International</a><a href="https://thatchristmaschannel.com/news/">News</a><a href="https://thatchristmaschannel.com/about-us/#newsletter">Newsletter</a></div>
     <div><h4>Follow</h4><a href="https://www.facebook.com/That-Christmas-Channel-243894509007889/">Facebook</a><a href="https://www.instagram.com/thatchristmaschannel/">Instagram</a><a href="https://thatchristmaschannel.com/feedback">Contact</a><a href="https://thatchristmaschannel.com/privacy">Privacy</a><a href="https://thatchristmaschannel.com/privacy-policy-2">Cookies</a></div>
   </div>
-  <div class="wrap copy">©2026 Boss Radio Networks / BBR Productions, Inc. All rights reserved.<br><button class="btn btn-gold install-btn" type="button" style="margin:16px 0 8px">📲 Get the That Christmas Channel App</button><br><span style="opacity:.6;font-size:11px">Version 2026.11.07-1350</span></div>
+  <div class="wrap copy">©2026 Boss Radio Networks / BBR Productions, Inc. All rights reserved.<br><button class="btn btn-gold install-btn" type="button" style="margin:16px 0 8px">📲 Get the That Christmas Channel App</button><br><span style="opacity:.6;font-size:11px">Version 2026.11.07-1410</span></div>
 </footer>
 
 <div class="pl-back" id="plBack"></div>
@@ -964,14 +964,14 @@ const BIOS={
  'Ron':"Raised in San Francisco, Ron studied broadcasting at San Francisco State. He has worked at radio stations across California, including as a program director, and runs a mobile DJ company in Arizona.",
  'Tim':"Tim has worked at many Northern California stations, starting out at the San Joaquin Delta College radio station. Before radio he ran a vending and catering business and held retail management roles.",
  'Magic Mike':"Magic Mike has a long history in Northern California radio. After years as a chef and general manager in restaurants and catering, he's back on the air playing pop, rock and R&B.",
- 'Bud':"Bud Kress started That 70's Channel as an internet station on Live365 in 2002 and still runs it as owner, program director and chief engineer."
+ 'Bud':"Bud Kress owns That Christmas Channel and That 70's Channel. He started That 70's Channel as an internet station on Live365 in 2002 and still runs it as owner, program director and chief engineer."
 };
-const hostImg=n=>'assets/hosts/'+n.toLowerCase().replace(/&/g,'').replace(/\s+/g,'-').replace(/-+/g,'-')+'.jpg';
+const hostImg=n=>'assets/hosts/'+n.toLowerCase().replace(/&/g,'').replace(/\s+/g,'-').replace(/-+/g,'-')+'.jpg?v=1410';
 function renderHosts(which){
   const list=which==='sun'?sun:week;
   $('#hostGrid').innerHTML=list.map(s=>{const on=live.group===which&&live.name===s[0];
     const ini=s[0].split(/\s|&/).filter(Boolean).map(w=>w[0]).join('').slice(0,2);
-    return `<div class="card host tilt${on?' live':''}" role="button" tabindex="0" data-host="${s[0]}" data-slot="${which==='sun'?'Sundays':'Mon – Sat'} · ${s[3]} PT" aria-label="${s[0]}: view profile">${on?'<span class="livetag">ON AIR</span>':''}<div class="av"><img src="${hostImg(s[0])}" alt="${s[0]}" loading="lazy" onerror="this.replaceWith('${ini}')"></div><h3>${s[0]}</h3><div class="slot">${which==='sun'?'Sundays':'Mon – Sat'} · ${s[3]}</div>${BIOS[s[0]]?'<span class="also">🎸 '+(s[0]==='Bud'?'Bud Kress · Founder of That 70\'s Channel':'Also on That 70\'s Channel')+'</span>':''}<span class="bio-hint">${BIOS[s[0]]?'Tap for bio':'Meet '+s[0]}</span></div>`}).join('');
+    return `<div class="card host tilt${on?' live':''}" role="button" tabindex="0" data-host="${s[0]}" data-slot="${which==='sun'?'Sundays':'Mon – Sat'} · ${s[3]} PT" aria-label="${s[0]}: view profile">${on?'<span class="livetag">ON AIR</span>':''}<div class="av"><img src="${hostImg(s[0])}" alt="${s[0]}" loading="lazy" onerror="this.replaceWith('${ini}')"></div><h3>${s[0]}</h3><div class="slot">${which==='sun'?'Sundays':'Mon – Sat'} · ${s[3]}</div>${BIOS[s[0]]?'<span class="also">'+(s[0]==='Bud'?'🎄 Bud Kress · Station Owner':'🎸 Also on That 70\'s Channel')+'</span>':''}<span class="bio-hint">${BIOS[s[0]]?'Tap for bio':'Meet '+s[0]}</span></div>`}).join('');
   bindTilt();
 }
 $$('.tabs .tab').forEach(b=>b.onclick=()=>{$$('.tabs .tab').forEach(x=>x.classList.remove('on'));b.classList.add('on');renderHosts(b.dataset.days)});
@@ -985,7 +985,7 @@ if(live.group==='sun'){$$('.tabs .tab')[1].click()}else renderHosts('week');
     $('#bioAv').innerHTML=`<img src="${hostImg(n)}" alt="${n}">`;$('#bioName').textContent=n;
     $('#bioTime').innerHTML=card.dataset.slot+(isLive?'<span class="bio-live">● ON AIR</span>':'');
     $('#bioText').textContent=bio||`${n} is one of Santa's Helpers on That Christmas Channel, playing the biggest hits of Christmas and more. Tune in during the show, or tap Say Hi to leave ${n} a message and tell them where you're listening from.`;
-    $('#bioSrc').innerHTML=!bio?'':n==='Bud'?`Profile from <a href="${T70}">That 70's Channel</a>, which Bud founded`:`Profile from <a href="${T70}">That 70's Channel</a>, where ${n} is also on the air`;
+    $('#bioSrc').innerHTML=!bio?'':n==='Bud'?`Owner of That Christmas Channel · Founder of <a href="${T70}">That 70's Channel</a>`:`Profile from <a href="${T70}">That 70's Channel</a>, where ${n} is also on the air`;
     $('#bioName').textContent=n==='Bud'?'Bud Kress':n;
     m.classList.add('on');m.setAttribute('aria-hidden','false');chime(988,.3)}
   function close(){m.classList.remove('on');m.setAttribute('aria-hidden','true')}
