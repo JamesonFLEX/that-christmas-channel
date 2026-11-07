@@ -193,7 +193,11 @@ h1,h2,h3{font-family:'Alfa Slab One',serif;font-weight:400;letter-spacing:.5px;l
 .card a.more{display:inline-block;margin-top:12px;font-weight:800;color:var(--gold2);text-decoration:none}
 .card a.more:hover{text-decoration:underline}
 .host{text-align:center}
-.host .av{width:72px;height:72px;margin:0 auto 8px;border-radius:50%;display:grid;place-items:center;font:28px 'Alfa Slab One';color:#fff;background:linear-gradient(135deg,var(--red2),var(--berry));box-shadow:0 0 0 3px var(--gold),0 10px 20px rgba(0,0,0,.4);transform:translateZ(40px)}
+.host .av{width:104px;height:104px;margin:0 auto 10px;border-radius:50%;overflow:hidden;display:grid;place-items:center;font:28px 'Alfa Slab One';color:#fff;background:linear-gradient(135deg,var(--red2),var(--berry));box-shadow:0 0 0 3px var(--gold),0 10px 20px rgba(0,0,0,.4);transform:translateZ(40px)}
+#hostGrid{display:flex;flex-wrap:wrap;justify-content:center}
+#hostGrid .host{flex:0 1 230px}
+@media (max-width:520px){#hostGrid .host{flex:0 1 calc(50% - 9px);padding:16px 10px}#hostGrid .host .av{width:88px;height:88px}}
+.host .av img{width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block}
 .host h3{font-size:18px}
 .host .slot{font-weight:600;color:var(--gold2);font-size:14px;transform:translateZ(20px)}
 .host.live{border-color:var(--gold);box-shadow:0 0 0 2px var(--gold),0 0 40px rgba(247,201,72,.35)}
@@ -863,7 +867,7 @@ function renderHosts(which){
   const list=which==='sun'?sun:week;
   $('#hostGrid').innerHTML=list.map(s=>{const on=live.group===which&&live.name===s[0];
     const ini=s[0].split(/\s|&/).filter(Boolean).map(w=>w[0]).join('').slice(0,2);
-    return `<div class="card host tilt${on?' live':''}">${on?'<span class="livetag">ON AIR</span>':''}<div class="av">${ini}</div><h3>${s[0]}</h3><div class="slot">${which==='sun'?'Sundays':'Mon – Sat'} · ${s[3]}</div></div>`}).join('');
+    return `<div class="card host tilt${on?' live':''}">${on?'<span class="livetag">ON AIR</span>':''}<div class="av"><img src="assets/hosts/${s[0].toLowerCase().replace(/&/g,'').replace(/\s+/g,'-').replace(/-+/g,'-')}.jpg" alt="${s[0]}" loading="lazy" onerror="this.replaceWith('${ini}')"></div><h3>${s[0]}</h3><div class="slot">${which==='sun'?'Sundays':'Mon – Sat'} · ${s[3]}</div></div>`}).join('');
   bindTilt();
 }
 $$('.tabs .tab').forEach(b=>b.onclick=()=>{$$('.tabs .tab').forEach(x=>x.classList.remove('on'));b.classList.add('on');renderHosts(b.dataset.days)});
