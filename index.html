@@ -248,12 +248,80 @@ h1,h2,h3{font-family:'Alfa Slab One',serif;font-weight:400;letter-spacing:.5px;l
 .sent{display:none;padding:14px;border-radius:12px;background:#e7f8ef;color:#0f5a3a;font-weight:600}
 @media (max-width:820px){.req{grid-template-columns:1fr}.two{grid-template-columns:1fr}}
 
+
+/* REQUEST QUIZ FUNNEL */
+.funnel{position:relative;max-width:820px;margin:0 auto;padding:26px;border-radius:30px;background:linear-gradient(160deg,rgba(255,255,255,.18),rgba(255,255,255,.05));border:1px solid rgba(255,255,255,.28);box-shadow:0 30px 70px rgba(0,0,0,.45);overflow:hidden}
+.f-top{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+.f-back{width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.35);background:rgba(7,13,38,.5);color:#fff;font-size:18px;cursor:pointer;visibility:hidden;flex:none}
+.f-steps{flex:1;display:flex;justify-content:space-between;position:relative;padding:0 6px}
+.f-steps:before{content:"";position:absolute;left:14px;right:14px;top:50%;height:3px;background:rgba(255,255,255,.18);transform:translateY(-50%)}
+.f-steps .rail{position:absolute;left:14px;top:50%;height:3px;width:0;background:linear-gradient(90deg,var(--gold),var(--red2));transform:translateY(-50%);transition:width .5s}
+.orn{position:relative;width:26px;height:26px;border-radius:50%;background:#253170;border:2px solid rgba(255,255,255,.3);display:grid;place-items:center;font-size:12px;transition:.35s;z-index:1}
+.orn:after{content:"";position:absolute;top:-6px;left:50%;width:8px;height:6px;margin-left:-4px;border-radius:2px;background:#c9a640}
+.orn.done{background:radial-gradient(circle at 35% 30%,#ff8a9a,var(--red) 60%);border-color:var(--gold);box-shadow:0 0 14px rgba(255,60,90,.7)}
+.orn.cur{background:radial-gradient(circle at 35% 30%,#fff3c4,var(--gold) 60%);border-color:#fff;box-shadow:0 0 18px rgba(247,201,72,.9);transform:scale(1.2)}
+.f-count{font-weight:800;font-size:13px;color:var(--gold2);letter-spacing:1px;white-space:nowrap}
+.f-stage{position:relative;min-height:380px}
+.f-step{position:absolute;inset:0;opacity:0;transform:translateX(60px) rotateY(-12deg);pointer-events:none;transition:opacity .45s,transform .45s}
+.f-step.on{position:relative;opacity:1;transform:none;pointer-events:auto}
+.f-step.out{transform:translateX(-60px) rotateY(12deg)}
+.f-q{font-family:'Alfa Slab One';font-size:clamp(24px,3.6vw,34px);color:#fff;margin:18px 0 4px;text-align:center}
+.f-sub{text-align:center;color:#d6def7;margin-bottom:18px}
+.f-opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.f-opt{display:flex;flex-direction:column;align-items:center;gap:6px;padding:18px 12px;border-radius:20px;border:2px solid rgba(255,255,255,.22);background:rgba(7,13,38,.55);color:#fff;font:700 16px Outfit;cursor:pointer;transition:transform .2s,border-color .2s,background .2s;text-align:center}
+.f-opt .e{font-size:38px;transition:transform .3s}
+.f-opt small{font-weight:500;color:#c8d3f5;font-size:13px}
+.f-opt:hover{transform:translateY(-4px);border-color:var(--gold)}
+.f-opt:hover .e{transform:scale(1.2) rotate(-8deg)}
+.f-opt.sel{background:linear-gradient(135deg,var(--red2),var(--berry));border-color:var(--gold);box-shadow:0 10px 30px rgba(200,16,46,.45)}
+.songs{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.song{display:flex;align-items:center;gap:12px;padding:14px;border-radius:16px;border:2px solid rgba(255,255,255,.22);background:rgba(7,13,38,.55);color:#fff;cursor:pointer;text-align:left;font:600 15px Outfit;transition:.2s}
+.song .disc{width:42px;height:42px;flex:none;border-radius:50%;background:repeating-radial-gradient(#111 0 2px,#2a2a2a 2px 4px);display:grid;place-items:center;position:relative}
+.song .disc:after{content:"";width:14px;height:14px;border-radius:50%;background:var(--red)}
+.song.sel .disc{animation:spin 1.6s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.song small{display:block;color:#c8d3f5;font-weight:500}
+.song:hover{border-color:var(--gold)}
+.song.sel{border-color:var(--gold);background:linear-gradient(135deg,rgba(227,38,63,.85),rgba(107,7,23,.9))}
+.f-fields{display:grid;gap:12px;max-width:560px;margin:0 auto}
+.f-fields label{display:block;font-weight:800;font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--gold2);margin-bottom:6px}
+.f-fields input{width:100%;padding:14px 16px;border-radius:14px;border:2px solid rgba(255,255,255,.3);background:rgba(255,255,255,.95);font:500 16px Outfit;color:var(--ink)}
+.f-fields input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 4px rgba(247,201,72,.25)}
+.f-fields input.bad{border-color:#ff5a6e;box-shadow:0 0 0 4px rgba(255,90,110,.25)}
+.f-two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.f-toggle{display:flex;gap:10px}
+.f-toggle button{flex:1;padding:12px;border-radius:14px;border:2px solid rgba(255,255,255,.3);background:rgba(7,13,38,.55);color:#fff;font:800 15px Outfit;cursor:pointer}
+.f-toggle button.sel{background:var(--gold);color:var(--ink);border-color:var(--gold)}
+.f-next{display:flex;justify-content:center;margin-top:22px}
+.f-other{margin-top:14px}
+.f-err{color:#ffb3bd;font-weight:700;text-align:center;min-height:22px;margin-top:8px}
+.result{text-align:center}
+.r-badge{display:inline-grid;place-items:center;width:120px;height:120px;border-radius:50%;font-size:60px;background:radial-gradient(circle at 35% 30%,#fff3c4,var(--gold) 55%,#b8860b);box-shadow:0 0 0 6px rgba(255,255,255,.2),0 0 50px rgba(247,201,72,.6);animation:pop .7s cubic-bezier(.2,1.6,.4,1)}
+@keyframes pop{from{transform:scale(0) rotate(-40deg)}}
+.r-title{font-family:Lobster;font-size:clamp(32px,5vw,46px);color:var(--gold);margin-top:12px}
+.r-blurb{color:#dbe5ff;max-width:560px;margin:6px auto 16px;font-size:17px}
+.ticket{max-width:520px;margin:0 auto;border-radius:18px;background:#fff;color:var(--ink);padding:16px 18px;text-align:left;position:relative;box-shadow:0 18px 40px rgba(0,0,0,.4)}
+.ticket:before,.ticket:after{content:"";position:absolute;top:50%;width:22px;height:22px;border-radius:50%;background:#1b2f86;margin-top:-11px}
+.ticket:before{left:-11px}.ticket:after{right:-11px}
+.ticket .row{display:flex;justify-content:space-between;gap:10px;padding:6px 0;border-bottom:1px dashed #cfd7ee;font-size:15px}
+.ticket .row:last-child{border:0}
+.ticket .row span{color:#56608a;font-weight:600;white-space:nowrap}
+.ticket .row b{text-align:right}
+.r-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:18px}
+#confetti{position:absolute;inset:0;pointer-events:none;z-index:5}
+.sent{display:none;max-width:520px;margin:14px auto 0;padding:14px;border-radius:12px;background:#e7f8ef;color:#0f5a3a;font-weight:600;text-align:center}
+@media (max-width:620px){.funnel{padding:18px 14px}.f-opts{grid-template-columns:1fr 1fr}.f-opt{padding:14px 8px}.f-opt .e{font-size:32px}.f-two{grid-template-columns:1fr}.f-stage{min-height:420px}}
+
 /* SHOP + STATIONS */
 .shop{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;padding:34px;border-radius:28px;background:linear-gradient(135deg,var(--gold2),var(--gold) 60%,#e0a422);color:var(--ink);box-shadow:0 25px 60px rgba(0,0,0,.4)}
 .shop h2{font-size:clamp(28px,4vw,42px);color:var(--berry)}
 .shop p{font-size:17px;font-weight:600;max-width:520px}
 .stations{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:10px}
-.station{padding:14px 20px;border-radius:16px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.22);text-decoration:none;font-weight:800;transition:.2s}
+.station{display:flex;align-items:center;gap:12px;padding:12px 18px 12px 12px;border-radius:16px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.22);text-decoration:none;font-weight:800;transition:.2s}
+.station .fav{width:40px;height:40px;flex:none;border-radius:11px;background:#fff;display:grid;place-items:center;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,.35)}
+.station .fav img{width:28px;height:28px;object-fit:contain}
+.station .fav b{font:400 15px "Alfa Slab One";color:var(--red)}
+.station:hover{transform:translateY(-3px)}
 .station:hover{background:var(--red);border-color:var(--red2)}
 .station small{display:block;font-weight:500;color:#c8d3f5;font-size:12px}
 
@@ -402,22 +470,18 @@ footer .wave.top{position:absolute;top:-99px;left:0;width:100%;height:100px}
 
 <section class="sec sec-royal" id="request">
   <svg class="wave top" viewBox="0 0 1440 110" preserveAspectRatio="none"><defs><linearGradient id="w5" x1="0" x2="1"><stop offset="0" stop-color="#182a78" stop-opacity=".85"/><stop offset=".5" stop-color="#2a4fd0" stop-opacity=".85"/><stop offset="1" stop-color="#182a78" stop-opacity=".85"/></linearGradient></defs><path fill="url(#w5)" d="M0,80 C220,30 420,15 640,45 C860,75 1000,100 1200,70 C1320,52 1390,40 1440,35 L1440,110 L0,110 Z"/></svg>
-  <div class="wrap req">
-    <div class="reveal">
-      <div class="sec-head" style="text-align:left;margin-bottom:10px"><div class="kick">⭐ On the air</div><h2>Request A Song!</h2></div>
-      <p style="font-size:18px;color:#dbe5ff">We'd love to play your favorite Christmas song on the air! Tell us the song, the artist and where you're listening from.</p>
-      <p style="margin-top:14px;color:#b8c6f0">Or email us directly: <b style="color:#fff">thatchristmaschannel@live365.com</b></p>
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="kick">⭐ Get on the air</div><h2>Request A Song!</h2><p>Take our 60-second Christmas quiz, find your holiday vibe, and send your song request to the station.</p></div>
+    <div class="funnel reveal" id="funnel">
+      <canvas id="confetti"></canvas>
+      <div class="f-top">
+        <button class="f-back" id="fBack" aria-label="Back">←</button>
+        <div class="f-steps" id="fSteps"><i class="rail" id="fRail"></i></div>
+        <span class="f-count" id="fCount">1 / 6</span>
+      </div>
+      <div class="f-stage" id="fStage"></div>
     </div>
-    <form id="reqForm" class="reveal" novalidate>
-      <div class="two"><div><label for="rSong">Song Title</label><input id="rSong" required></div><div><label for="rArtist">Artist</label><input id="rArtist" required></div></div>
-      <div class="two"><div><label for="rFirst">First Name</label><input id="rFirst" required autocomplete="given-name"></div><div><label for="rLast">Last Name</label><input id="rLast" required autocomplete="family-name"></div></div>
-      <div><label for="rEmail">Your Email</label><input id="rEmail" type="email" required autocomplete="email"></div>
-      <div><label for="rWhere">Where are you listening from?</label><input id="rWhere" placeholder="City, State, Country" required></div>
-      <div><label for="rList">Join our mailing list?</label><select id="rList"><option>Yes</option><option>No</option></select></div>
-      <p class="form-note" id="formNote">All fields are required.</p>
-      <button class="btn btn-red" type="submit">⭐ Send My Request</button>
-      <div class="sent" id="sentMsg"></div>
-    </form>
+    <p class="tip">Prefer email? Send your request to <b>thatchristmaschannel@live365.com</b></p>
   </div>
 </section>
 
@@ -430,12 +494,12 @@ footer .wave.top{position:absolute;top:-99px;left:0;width:100%;height:100px}
     </div>
     <div class="sec-head reveal" style="margin-top:80px"><div class="kick">More from the family</div><h2>The Boss Nation of Stations</h2></div>
     <div class="stations reveal">
-      <a class="station" href="https://that70schannel.com">That 70s Channel<small>that70schannel.com</small></a>
-      <a class="station" href="https://that90schannel.com">That 90s Channel<small>that90schannel.com</small></a>
-      <a class="station" href="https://altbossgold.com">Alt Boss Gold<small>altbossgold.com</small></a>
-      <a class="station" href="https://playfmonline.com">Play FM<small>playfmonline.com</small></a>
-      <a class="station" href="https://bosscountryradio.com">Boss Country Radio<small>bosscountryradio.com</small></a>
-      <a class="station" href="https://bossbossradio.com">Boss Boss Radio<small>bossbossradio.com</small></a>
+      <a class="station" href="https://that70schannel.com"><span class="fav"><img src="https://www.google.com/s2/favicons?domain=that70schannel.com&amp;sz=64" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('b'),{textContent:'70'}))"></span><span>That 70s Channel<small>that70schannel.com</small></span></a>
+      <a class="station" href="https://that90schannel.com"><span class="fav"><img src="https://www.google.com/s2/favicons?domain=that90schannel.com&amp;sz=64" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('b'),{textContent:'90'}))"></span><span>That 90s Channel<small>that90schannel.com</small></span></a>
+      <a class="station" href="https://altbossgold.com"><span class="fav"><img src="https://www.google.com/s2/favicons?domain=altbossgold.com&amp;sz=64" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('b'),{textContent:'AB'}))"></span><span>Alt Boss Gold<small>altbossgold.com</small></span></a>
+      <a class="station" href="https://playfmonline.com"><span class="fav"><img src="https://www.google.com/s2/favicons?domain=playfmonline.com&amp;sz=64" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('b'),{textContent:'FM'}))"></span><span>Play FM<small>playfmonline.com</small></span></a>
+      <a class="station" href="https://bosscountryradio.com"><span class="fav"><img src="https://www.google.com/s2/favicons?domain=bosscountryradio.com&amp;sz=64" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('b'),{textContent:'BC'}))"></span><span>Boss Country Radio<small>bosscountryradio.com</small></span></a>
+      <a class="station" href="https://bossbossradio.com"><span class="fav"><img src="https://www.google.com/s2/favicons?domain=bossbossradio.com&amp;sz=64" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('b'),{textContent:'BB'}))"></span><span>Boss Boss Radio<small>bossbossradio.com</small></span></a>
     </div>
   </div>
 </section>
@@ -919,16 +983,98 @@ const C=(()=>{
   $('#tGo').onclick=startQ;
 })();
 
-/* ---------- SONG REQUEST ---------- */
-$('#reqForm').addEventListener('submit',e=>{e.preventDefault();
-  const v=id=>$('#'+id).value.trim();const ids=['rSong','rArtist','rFirst','rLast','rEmail','rWhere'];
-  const missing=ids.filter(id=>!v(id));ids.forEach(id=>$('#'+id).style.borderColor=missing.includes(id)?'#c8102e':'');
-  if(missing.length||!/^\S+@\S+\.\S+$/.test(v('rEmail'))){$('#formNote').textContent='Please fill in every field with a valid email.';$('#formNote').style.color='#c8102e';return}
-  const body=`Song: ${v('rSong')}\nArtist: ${v('rArtist')}\nName: ${v('rFirst')} ${v('rLast')}\nEmail: ${v('rEmail')}\nListening from: ${v('rWhere')}\nMailing list: ${$('#rList').value}`;
-  const href='mailto:thatchristmaschannel@live365.com?subject='+encodeURIComponent('Song Request: '+v('rSong'))+'&body='+encodeURIComponent(body);
-  const a=document.createElement('a');a.href=href;a.click();
-  const s=$('#sentMsg');s.style.display='block';s.innerHTML='🎄 Your email app should open with the request filled in. Just hit send! If nothing opened, email it to <b>thatchristmaschannel@live365.com</b>.';chime(1047,.5);
-});
+/* ---------- SONG REQUEST QUIZ FUNNEL ---------- */
+(function(){
+  const VIBES={
+    crooner:{e:'🎩',l:'Classic Crooner',d:'Bing, Nat & the golden age',title:'The Classic Crooner',blurb:'Velvet vocals, a crackling fire and a cup of cocoa. You keep Christmas timeless.',songs:[["White Christmas","Bing Crosby"],["The Christmas Song","Nat King Cole"],["Have Yourself a Merry Little Christmas","Judy Garland"],["It's Beginning to Look a Lot Like Christmas","Perry Como"]]},
+    rock:{e:'🎸',l:"Rockin' Around",d:'50s & 60s rock and roll',title:"The Rockin' Reindeer",blurb:'You want a Christmas that swings, twists and shakes the tinsel right off the tree.',songs:[["Rockin' Around the Christmas Tree","Brenda Lee"],["Jingle Bell Rock","Bobby Helms"],["Run Rudolph Run","Chuck Berry"],["Blue Christmas","Elvis Presley"]]},
+    pop:{e:'✨',l:'Pop Party',d:'Modern hits & big choruses',title:'The Pop Star Elf',blurb:'Ugly sweater on, volume up. You turn every holiday into a singalong.',songs:[["All I Want for Christmas Is You","Mariah Carey"],["Last Christmas","Wham!"],["Underneath the Tree","Kelly Clarkson"],["Santa Tell Me","Ariana Grande"]]},
+    country:{e:'🤠',l:'Country Christmas',d:'Boots, banjos & back roads',title:'The Cowboy Claus',blurb:'Twang, heart and a pickup truck full of presents. Yeehaw-ho-ho!',songs:[["Pretty Paper","Willie Nelson"],["Christmas in Dixie","Alabama"],["Hard Candy Christmas","Dolly Parton"],["Here Comes Santa Claus","Gene Autry"]]},
+    sacred:{e:'🕯️',l:'Silent Night',d:'Choirs, carols & candlelight',title:'The Candlelight Caroler',blurb:'For you, Christmas is wonder and peace on earth, best heard in harmony.',songs:[["O Holy Night","Josh Groban"],["Mary, Did You Know?","Pentatonix"],["The Little Drummer Boy","Harry Simeone Chorale"],["Do You Hear What I Hear?","Bing Crosby"]]},
+    kids:{e:'🦌',l:'Kids & Novelty',d:'Silly, sweet & sing-along',title:'The Jolly Jokester',blurb:"You're the one making everyone laugh, with reindeer antlers firmly on your head.",songs:[["Rudolph the Red-Nosed Reindeer","Gene Autry"],["Frosty the Snowman","Gene Autry"],["The Chipmunk Song","The Chipmunks"],["Grandma Got Run Over by a Reindeer","Elmo & Patsy"]]}
+  };
+  const WHO=[['👨‍👩‍👧','The whole family'],['🥂','Friends & a party'],['🧣','Just me, cozy'],['💼','At work'],['🚗','Out on the road']];
+  const SCENE=[['🌲','Trimming the tree'],['🍪','Baking cookies'],['🎁','Wrapping presents'],['❄️','Watching the snow'],['🕺','Ugly sweater party']];
+  const st={vibe:null,who:null,scene:null,song:'',artist:'',ded:'',where:'',first:'',last:'',email:'',list:'Yes'};
+  const N=6;let cur=0;
+  const stage=$('#fStage'),steps=$('#fSteps');
+  for(let i=0;i<N;i++){const o=document.createElement('span');o.className='orn';steps.appendChild(o)}
+  const orns=[...steps.querySelectorAll('.orn')];
+  const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  function opts(list,key){return `<div class="f-opts">${list.map(([v,e,l,d])=>`<button class="f-opt${st[key]===v?' sel':''}" data-k="${key}" data-v="${esc(v)}"><span class="e">${e}</span>${esc(l)}${d?`<small>${esc(d)}</small>`:''}</button>`).join('')}</div>`}
+  function view(i){
+    if(i===0)return `<div class="f-q">What's your Christmas vibe?</div><div class="f-sub">Pick the sound that makes it feel like Christmas.</div>`+opts(Object.entries(VIBES).map(([k,v])=>[k,v.e,v.l,v.d]),'vibe');
+    if(i===1)return `<div class="f-q">Who's listening with you?</div><div class="f-sub">Every great request has an audience.</div>`+opts(WHO.map(([e,l])=>[l,e,l]),'who');
+    if(i===2)return `<div class="f-q">Set the scene 🎬</div><div class="f-sub">What are you doing when your song comes on?</div>`+opts(SCENE.map(([e,l])=>[l,e,l]),'scene');
+    if(i===3){const V=VIBES[st.vibe];const other=st.song&&!V.songs.some(s=>s[0]===st.song);
+      return `<div class="f-q">Pick your request</div><div class="f-sub">A few ${esc(V.l)} favorites, or name any Christmas song you like.</div>
+      <div class="songs">${V.songs.map(([s,a])=>`<button class="song${st.song===s?' sel':''}" data-s="${esc(s)}" data-a="${esc(a)}"><span class="disc"></span><span>${esc(s)}<small>${esc(a)}</small></span></button>`).join('')}
+      <button class="song${other?' sel':''}" data-s="__other"><span class="disc"></span><span>Something else<small>Type your own request</small></span></button></div>
+      <div class="f-fields f-other" id="otherBox" style="display:${other?'grid':'none'}"><div class="f-two"><div><label for="qSong">Song title</label><input id="qSong" value="${other?esc(st.song):''}"></div><div><label for="qArtist">Artist</label><input id="qArtist" value="${other?esc(st.artist):''}"></div></div></div>
+      <div class="f-err" id="fErr"></div><div class="f-next"><button class="btn btn-gold" data-next>Next 🎁</button></div>`}
+    if(i===4)return `<div class="f-q">Make it personal 💌</div><div class="f-sub">Tell the hosts who it's for and where you're tuning in from.</div>
+      <div class="f-fields"><div><label for="qDed">Dedicate it to (optional)</label><input id="qDed" placeholder="e.g. Grandma Rose" value="${esc(st.ded)}"></div>
+      <div><label for="qWhere">Where are you listening from?</label><input id="qWhere" placeholder="City, State, Country" value="${esc(st.where)}"></div></div>
+      <div class="f-err" id="fErr"></div><div class="f-next"><button class="btn btn-gold" data-next>Almost there ⭐</button></div>`;
+    if(i===5)return `<div class="f-q">Who's the request from?</div><div class="f-sub">So the hosts can give you a shout-out.</div>
+      <div class="f-fields"><div class="f-two"><div><label for="qFirst">First name</label><input id="qFirst" autocomplete="given-name" value="${esc(st.first)}"></div><div><label for="qLast">Last name</label><input id="qLast" autocomplete="family-name" value="${esc(st.last)}"></div></div>
+      <div><label for="qEmail">Email</label><input id="qEmail" type="email" autocomplete="email" value="${esc(st.email)}"></div>
+      <div><label>Join our mailing list?</label><div class="f-toggle"><button data-list="Yes" class="${st.list==='Yes'?'sel':''}">🎄 Yes please</button><button data-list="No" class="${st.list==='No'?'sel':''}">No thanks</button></div></div></div>
+      <div class="f-err" id="fErr"></div><div class="f-next"><button class="btn btn-red" data-next>🎅 Reveal My Christmas Vibe</button></div>`;
+    const V=VIBES[st.vibe];
+    return `<div class="result"><div class="r-badge">${V.e}</div><div class="r-title">You're ${esc(V.title)}!</div>
+      <p class="r-blurb">${esc(V.blurb)} Perfect for ${esc(st.scene.toLowerCase())} with ${esc(st.who.toLowerCase())}.</p>
+      <div class="ticket"><div class="row"><span>🎵 Song</span><b>${esc(st.song)}</b></div><div class="row"><span>🎤 Artist</span><b>${esc(st.artist)}</b></div>
+      ${st.ded?`<div class="row"><span>💌 For</span><b>${esc(st.ded)}</b></div>`:''}<div class="row"><span>📍 From</span><b>${esc(st.first)} ${esc(st.last)}, ${esc(st.where)}</b></div></div>
+      <div class="r-actions"><button class="btn btn-red" id="fSend">⭐ Send My Request</button><button class="btn btn-ghost" id="fAgain">↺ Start Over</button></div>
+      <div class="sent" id="sentMsg"></div></div>`;
+  }
+  function go(i,dir=1){
+    const old=stage.querySelector('.f-step.on');
+    if(old){old.classList.remove('on');if(dir>0)old.classList.add('out');setTimeout(()=>old.remove(),450)}
+    const el=document.createElement('div');el.className='f-step';el.innerHTML=view(i);stage.appendChild(el);
+    if(dir<0)el.style.transform='translateX(-60px) rotateY(12deg)';
+    requestAnimationFrame(()=>requestAnimationFrame(()=>{el.style.transform='';el.classList.add('on')}));
+    cur=i;bind(el);
+    orns.forEach((o,k)=>{o.className='orn'+(k<i?' done':'')+(k===i?' cur':'');o.textContent=k<i?'✓':''});
+    if(i>=N)orns.forEach(o=>{o.className='orn done';o.textContent='✓'});
+    $('#fRail').style.width=`calc(${Math.min(i,N-1)/(N-1)*100}% - ${Math.min(i,N-1)/(N-1)*28}px)`;
+    $('#fCount').textContent=i>=N?'🎉 Done':(i+1)+' / '+N;
+    $('#fBack').style.visibility=i>0&&i<N?'visible':'hidden';
+    if(i===N){confetti();[784,988,1175,1568].forEach((f,k)=>setTimeout(()=>chime(f,.4),k*130))}
+  }
+  const val=id=>{const e=$('#'+id);return e?e.value.trim():''};
+  function err(m,ids=[]){$('#fErr').textContent=m;ids.forEach(id=>{const e=$('#'+id);e.classList.add('bad');e.addEventListener('input',()=>e.classList.remove('bad'),{once:true})})}
+  function bind(el){
+    el.querySelectorAll('.f-opt').forEach(b=>b.onclick=()=>{st[b.dataset.k]=b.dataset.v;if(b.dataset.k==='vibe'){st.song='';st.artist=''}
+      el.querySelectorAll('.f-opt').forEach(x=>x.classList.remove('sel'));b.classList.add('sel');chime(660+cur*110,.25);setTimeout(()=>go(cur+1),380)});
+    el.querySelectorAll('.song').forEach(b=>b.onclick=()=>{el.querySelectorAll('.song').forEach(x=>x.classList.remove('sel'));b.classList.add('sel');chime(880,.25);
+      if(b.dataset.s==='__other'){$('#otherBox').style.display='grid';st.song='';st.artist='';$('#qSong').focus()}else{$('#otherBox').style.display='none';st.song=b.dataset.s;st.artist=b.dataset.a;setTimeout(()=>go(4),420)}});
+    el.querySelectorAll('[data-list]').forEach(b=>b.onclick=()=>{st.list=b.dataset.list;el.querySelectorAll('[data-list]').forEach(x=>x.classList.toggle('sel',x===b))});
+    el.querySelectorAll('input').forEach(inp=>inp.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();const n=el.querySelector('[data-next]');n&&n.click()}}));
+    const nx=el.querySelector('[data-next]');if(nx)nx.onclick=()=>{
+      if(cur===3){if($('#otherBox').style.display!=='none'){st.song=val('qSong');st.artist=val('qArtist')}
+        if(!st.song||!st.artist)return err('Pick a song above, or type a song and artist.',$('#otherBox').style.display!=='none'?['qSong','qArtist'].filter(i=>!val(i)):[])}
+      if(cur===4){st.ded=val('qDed');st.where=val('qWhere');if(!st.where)return err('Where are you listening from?',['qWhere'])}
+      if(cur===5){st.first=val('qFirst');st.last=val('qLast');st.email=val('qEmail');const bad=['qFirst','qLast'].filter(i=>!val(i));if(!/^\S+@\S+\.\S+$/.test(st.email))bad.push('qEmail');
+        if(bad.length)return err('Please add your name and a valid email.',bad)}
+      chime(988,.25);go(cur+1)};
+    const send=el.querySelector('#fSend');if(send)send.onclick=()=>{
+      const V=VIBES[st.vibe];
+      const body=`Song: ${st.song}\nArtist: ${st.artist}\n${st.ded?'Dedicated to: '+st.ded+'\n':''}Name: ${st.first} ${st.last}\nEmail: ${st.email}\nListening from: ${st.where}\nMailing list: ${st.list}\n\nChristmas vibe: ${V.title} (${st.who}, ${st.scene})`;
+      const a=document.createElement('a');a.href='mailto:thatchristmaschannel@live365.com?subject='+encodeURIComponent('Song Request: '+st.song)+'&body='+encodeURIComponent(body);a.click();
+      const s=$('#sentMsg');s.style.display='block';s.innerHTML='🎄 Your email app should open with your request filled in. Just hit send! If nothing opened, email it to <b>thatchristmaschannel@live365.com</b>.';confetti();chime(1319,.5)};
+    const again=el.querySelector('#fAgain');if(again)again.onclick=()=>{Object.assign(st,{vibe:null,who:null,scene:null,song:'',artist:'',ded:''});go(0,-1)};
+  }
+  $('#fBack').onclick=()=>{if(cur>0){chime(523,.2);go(cur-1,-1)}};
+  function confetti(){const cv=$('#confetti'),x=cv.getContext('2d'),W=cv.width=cv.clientWidth,H=cv.height=cv.clientHeight;
+    const cols=['#c8102e','#f7c948','#ffffff','#36d27a','#5aa9ff'],ps=[];
+    for(let i=0;i<140;i++)ps.push({x:W/2,y:H*.3,vx:(Math.random()-.5)*14,vy:-Math.random()*12-4,r:Math.random()*6+3,c:cols[i%5],a:Math.random()*6,va:(Math.random()-.5)*.3,s:Math.random()<.3});
+    let f=0;(function tick(){x.clearRect(0,0,W,H);for(const p of ps){p.vy+=.35;p.vx*=.99;p.x+=p.vx;p.y+=p.vy;p.a+=p.va;x.save();x.translate(p.x,p.y);x.rotate(p.a);x.fillStyle=p.c;
+      if(p.s){x.font=p.r*3+'px serif';x.fillText('❄',0,0)}else x.fillRect(-p.r/2,-p.r/4,p.r,p.r/2);x.restore()}
+      if(++f<160)requestAnimationFrame(tick);else x.clearRect(0,0,W,H)})()}
+  go(0);
+})();
 })();
 </script>
 </body>
